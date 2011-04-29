@@ -1,4 +1,4 @@
-Rhyns README
+rhyns README
 
 
 

@@ -19,9 +19,9 @@ requires = [
 if sys.version_info[:3] < (2,5,0):
     requires.append('pysqlite')
 
-setup(name='Rhyns',
+setup(name='rhyns',
       version='0.0',
-      description='Rhyns',
+      description='rhyns',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
         "Programming Language :: Python",
