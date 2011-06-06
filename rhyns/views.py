@@ -4,11 +4,28 @@ from rhyns.models import DBSession
 from rhyns.models import Thunder
 from rhyns.thunders_control import *
 from pyramid.response import Response
+from pyramid.view import view_config
 
-
-
+# @view_config(route_name='home', renderer='template.pt')
+@view_config(renderer='list.mako')
 def home(request):
-    return Response("Waiting for Abel template :)")
+    session = DBSession()
+    thunder = session.query(Thunder).filter(Thunder.id == "1").one()
+    thunders = session.query(Thunder).all()
+
+    for t in thunders:
+
+        t.hypervisor = do_check_hypervisor(t)
+        session.add(t)
+    session.flush()
+    transaction.commit()
+
+    thunder = session.query(Thunder).filter(Thunder.id == "1").one()
+    thunders = session.query(Thunder).all()
+
+    return  {'project':thunder.status, 'thunders':thunders} # Response("Waiting for Abel template :)")
+
+
 
 def status(request):
     session = DBSession()

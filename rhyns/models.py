@@ -25,7 +25,7 @@ class Thunder(Base):
     id = Column(Integer, primary_key=True)
     ip = Column(Unicode(15), unique=True)
     ipmiip = Column(Unicode(15), unique=True)
-    hypervisor = Column(Enum("esxi","xenserver","kvm","xen","vbox","hyperv"))
+    hypervisor = Column(Enum("esxi","xenserver","kvm","xen","vbox","hyperv","unknown"))
     status = Column(Enum("ok","installing","poweringon","poweringoff","rebooting"))
 
     def __init__(self, id, ip, ipmiip, hypervisor, status):
