@@ -4,10 +4,10 @@ import urllib2
 def do_check_status(thunder):
     return u"ok"
 
-def do_install(thunder, hypervisor):
+def do_install(ip, hypervisor):
     ruidossh = paramiko.SSHClient()
     ruidossh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ruidossh.connect("10.60.1.4",username="root",password="temporal",key_filename="key")
+    ruidossh.connect("10.60.1.4",username="root",password="temporal",key_filename="/home/aboldu/rhyns/rhyns/key")
     time.sleep(1)
     ruidossh.exec_command("unlink /tftpboot/pxelinux")
     time.sleep(1)
@@ -26,20 +26,20 @@ def do_install(thunder, hypervisor):
     elif (hypervisor == "vbox"):
       #VirtualBox
       #Abiquo V2V
-      ruidossh.exec_command("ln -s abiquov2v /tftpboot/pxelinux")
+      ruidossh.exec_command("ln -s abiquovbox /tftpboot/pxelinux")
     else:
 	  pass
-    os.system("ipmitool -U root -H "+thunder.ip+" -P temporal chassis bootdev pxe")
-    os.system("ipmitool -U root -H "+thunder.ip+" -P temporal chassis power reset")
+    os.system("ipmitool -U root -H "+ip+" -P temporal chassis bootdev pxe")
+    os.system("ipmitool -U root -H "+ip+" -P temporal chassis power reset")
 
 def do_poweron(thunder):
-    os.system("ipmitool -U root -H "+thunder.ip+" -P temporal chassis power on")
+    os.system("ipmitool -U root -H "+thunder.ipmiip+" -P temporal chassis power on")
 
 def do_poweroff(thunder):
-    os.system("ipmitool -U root -H "+thunder.ip+" -P temporal chassis power off")
+    os.system("ipmitool -U root -H "+thunder.ipmiip+" -P temporal chassis power off")
 
 def do_reboot(thunder):
-    os.system("ipmitool -U root -H "+thunder.ip+" -P temporal chassis power reset")
+    os.system("ipmitool -U root -H "+thunder.ipmiip+" -P temporal chassis power reset")
 
 def do_check_hypervisor(thunder):
     hv = "unknown"

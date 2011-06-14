@@ -17,9 +17,10 @@ body, td
 font-size: 14px;
 font-family: arial,verdana,sans-serif;
 line-height: 16px;
+font-color: 16px;
 text-decoration: none;
 font-weight: normal;
-background-color:#AABAA9;
+background-color:#cccccc;
 
 }
 
@@ -28,10 +29,10 @@ a:hover{color:#ED6113;text-decoration:underline;}
 
 .square
 {
-width:250px;
+width:203px;
 background-color:#8CB88A;
 padding: 5px 10px 5px 10px;
-border: 2px solid #046000;
+border: 2px solid #002200;
 margin: 2px;
 }
 
