@@ -36,6 +36,26 @@ border: 2px solid #002200;
 margin: 2px;
 }
 
+.square_red
+{
+width:203px;
+background-color:#C69D98;
+padding: 5px 10px 5px 10px;
+border: 2px solid #002200;
+margin: 2px;
+}
+
+.square_yellow
+{
+width:203px;
+background-color:#C8C758;
+padding: 5px 10px 5px 10px;
+border: 2px solid #002200;
+margin: 2px;
+}
+
+
+
 .square2
 {
 width:180px;

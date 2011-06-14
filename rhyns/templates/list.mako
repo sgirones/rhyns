@@ -18,7 +18,7 @@ return false ;
 
 <!-- Autorefresh 30s -->
 
-<META HTTP-EQUIV="Refresh" CONTENT="10">
+<META HTTP-EQUIV="Refresh" CONTENT="30">
 
 
 <div style="float:center">
@@ -28,7 +28,14 @@ return false ;
 <ul id="tasks">
 % if thunders:
   % for t in thunders:
+    % if (t.status == "off" or t.status == "locked"):
+
+  <span class="square_red make_float">
+    % elif t.status == "installing":
+  <span class="square_yellow make_float">
+    % else:
   <span class="square make_float">
+    % endif
     <div style="float: right;">
    <a href="${request.route_url('check_status', thunder_id=t.id)}"><img height="23" width="23" alt="Refresh" src="/static/refresh.png"/></a>
       
