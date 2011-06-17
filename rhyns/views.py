@@ -11,17 +11,6 @@ from pyramid.view import view_config
 def home(request):
     session = DBSession()
     thunders = session.query(Thunder).all()
-
-    # for t in thunders:
-    #
-    #    t.hypervisor = do_check_hypervisor(t)
-    #     session.add(t)
-    # session.flush()
-    # transaction.commit()
-
-    # thunder = session.query(Thunder).filter(Thunder.id == "1").one()
-    # thunders = session.query(Thunder).all()
-
     return  {'project':'thunderdome', 'thunders':thunders}
 
 
