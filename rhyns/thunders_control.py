@@ -8,7 +8,7 @@ def do_check_status(thunder):
 def do_install(ip, hypervisor):
     ruidossh = paramiko.SSHClient()
     ruidossh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ruidossh.connect("10.60.1.4",username="root",password="temporal",key_filename="/home/aboldu/rhyns/rhyns/key")
+    ruidossh.connect("10.60.1.4",username="root",password="temporal",key_filename="/opt/rhyns/rhyns/key")
     time.sleep(1)
     ruidossh.exec_command("unlink /tftpboot/pxelinux")
     time.sleep(1)
@@ -32,6 +32,8 @@ def do_install(ip, hypervisor):
 	  pass
     os.system("ipmitool -U root -H "+ip+" -P temporal chassis bootdev pxe")
     os.system("ipmitool -U root -H "+ip+" -P temporal chassis power reset")
+    os.system("ipmitool -U root -H "+ip+" -P temporal chassis power on")
+
 
 def do_poweron(thunder):
     os.system("ipmitool -U root -H "+thunder.ipmiip+" -P temporal chassis power on")
