@@ -31,21 +31,21 @@ return false ;
     % if (t.status == "locked"):
   <span class="square_gray make_float">
     <div style="float: right;">
-      <a href="${request.route_url('unlock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/unlock.png"/></a>
+      <a href="${request.route_url('unlock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/lock.png"/></a>
     </div>
     % elif t.power == "off":
   <span class="square_red make_float">
     <div style="float: right;">
-      <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/lock.png"/></a>
+      <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/unlock.png"/></a>
     </div>
     % elif t.status == "installing":
     <div style="float: right;">
-      <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/lock.png"/></a>
+      <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/unlock.png"/></a>
   <span class="square_yellow make_float">
     % else:
   <span class="square make_float">
     <div style="float: right;">
-      <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/lock.png"/></a>
+      <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/unlock.png"/></a>
     </div>
     % endif
     <div style="float: right;">
