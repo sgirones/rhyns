@@ -1,5 +1,6 @@
 import time,os,paramiko
 import urllib2
+import commands
 
 def do_check_status(thunder):
     return u"ok"
@@ -58,5 +59,11 @@ def do_check_hypervisor(thunder):
     elif ("xen" in api_hv):
         hv = u"xen"
     return hv
+
+def do_check_power(thunder):
+    return (commands.getoutput("ipmitool -U root -H "+thunder.ipmiip+" -P temporal chassis status | grep 'System Power' | awk '{print $4}' " ) )
+
+
+
 
 

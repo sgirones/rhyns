@@ -36,6 +36,15 @@ border: 2px solid #002200;
 margin: 2px;
 }
 
+.square_gray
+{
+width:203px;
+background-color:#9B9BB;
+padding: 5px 10px 5px 10px;
+border: 2px solid #002200;
+margin: 2px;
+}
+
 .square_red
 {
 width:203px;
