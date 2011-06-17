@@ -11,17 +11,6 @@ from pyramid.view import view_config
 def home(request):
     session = DBSession()
     thunders = session.query(Thunder).all()
-
-    # for t in thunders:
-    #
-    #    t.hypervisor = do_check_hypervisor(t)
-    #     session.add(t)
-    # session.flush()
-    # transaction.commit()
-
-    # thunder = session.query(Thunder).filter(Thunder.id == "1").one()
-    # thunders = session.query(Thunder).all()
-
     return  {'project':'thunderdome', 'thunders':thunders}
 
 
@@ -38,6 +27,7 @@ def check_status(request):
     thunder = session.query(Thunder).filter(Thunder.id == request.matchdict["thunder_id"]).one()
    #  thunder.status = do_check_status(thunder)
     thunder.hypervisor = do_check_hypervisor(thunder)
+    thunder.power = do_check_power(thunder)
     if (thunder.status == u"installing" and thunder.hypervisor != u"unknown") :
         thunder.status = u'ok'
 
