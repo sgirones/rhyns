@@ -93,7 +93,7 @@ def install(request):
       do_install(thunder.ipmiip,request.matchdict["hypervisor"])
       res = "Installing hypervisor {0} on thunder {1}...".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
     else:
-      res = "Thunder {1} locked!".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Thunder {0} locked!".format(request.matchdict["thunder_id"])
     return {'project':'thunders','message':res}
 
 def poweron(request):
@@ -106,9 +106,9 @@ def poweron(request):
       session.add(thunder)
       session.flush()
       transaction.commit()
-      res = "Powering on thunder {1}...".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Powering on thunder {0}...".format(request.matchdict["thunder_id"])
     else:
-      res = "Thunder {1} locked!".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Thunder {0} locked!".format(request.matchdict["thunder_id"])
     return {'project':'thunders','message':res}
 
 def poweroff(request):
@@ -121,9 +121,9 @@ def poweroff(request):
       session.add(thunder)
       session.flush()
       transaction.commit()
-      res = "Powering off thunder {1}...".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Powering off thunder{0}...".format(request.matchdict["thunder_id"])
     else:
-      res = "Thunder {1} locked!".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Thunder{0} locked!".format(request.matchdict["thunder_id"])
     return {'project':'thunders','message':res}
 
 def reboot(request):
@@ -136,8 +136,8 @@ def reboot(request):
       session.add(thunder)
       session.flush()
       transaction.commit()
-      res = "Rebooting thunder {1}...".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Rebooting thunder{0}...".format(request.matchdict["thunder_id"])
     else:
-      res = "Thunder {1} locked!".format(request.matchdict["hypervisor"], request.matchdict["thunder_id"])
+      res = "Thunder{0} locked!".format(request.matchdict["thunder_id"])
     return {'project':'thunders','message':res}
 
