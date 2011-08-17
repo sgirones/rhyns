@@ -25,11 +25,10 @@ def status(request):
 def check_status(request):
     session = DBSession()
     thunder = session.query(Thunder).filter(Thunder.id == request.matchdict["thunder_id"]).one()
-    thunder.hypervisor = do_check_hypervisor(thunder)
+    thunder.hypervisor = do_check_hypervisor_by_api(thunder)
     thunder.power = do_check_power(thunder)
-    if (thunder.status == u"installing" and thunder.hypervisor != u"unknown") :
+    if (thunder.hypervisor != u"unknown") :
         thunder.status = u'ok'
-
     session.add(thunder)
     session.flush()
     transaction.commit()

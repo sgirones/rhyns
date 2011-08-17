@@ -39,9 +39,10 @@ return false ;
       <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/unlock.png"/></a>
     </div>
     % elif t.status == "installing":
+  <span class="square_yellow make_float">
     <div style="float: right;">
       <a href="${request.route_url('lock', thunder_id=t.id)}"><img height="23" width="23" alt="lock" src="/static/unlock.png"/></a>
-  <span class="square_yellow make_float">
+    </div>
     % else:
   <span class="square make_float">
     <div style="float: right;">
@@ -64,15 +65,25 @@ return false ;
 
 
     Install hypervisor:<br />
-    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='xen')}" onClick="return confirmPost();" >XEN</a><br />
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='xen175')}" onClick="return confirmPost();" >XEN 1.7.5</a><br />
+    
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='xen180')}" onClick="return confirmPost();" >XEN 1.8.0</a><br />
 
-    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='kvm')}" onClick="return confirmPost();" >KVM</a><br />
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='kvm175')}" onClick="return confirmPost();" >KVM 1.7.5</a><br />
 
-    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='esxi')}" onClick="return confirmPost();" >ESXi</a><br />
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='kvm180')}" onClick="return confirmPost();" >KVM 1.8.0</a><br />
 
-    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='xenserver')}" onClick="return confirmPost();" >XenServer</a><br />
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='esxi')}" onClick="return confirmPost();" >ESXi 4</a><br />
+    
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='esxi5')}" onClick="return confirmPost();" >ESXi 5</a><br />
 
-    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='vbox')}" onClick="return confirmPost();" >VirtualBox</a><br />
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='xenserver')}" onClick="return confirmPost();" >XenServer 5</a><br />
+    
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='xenserver6')}" onClick="return confirmPost();" >XenServer 6</a><br />
+
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='vbox175')}" onClick="return confirmPost();" >VirtualBox 1.7.5</a><br />
+
+    <a href="${request.route_url('install', thunder_id=t.id, hypervisor='vbox180')}" onClick="return confirmPost();" >VirtualBox 1.8.0</a><br />
 
     <a href="${request.route_url('install', thunder_id=t.id, hypervisor='v2v')}" onClick="return confirmPost();" >Abiquo V2V</a><br />
 

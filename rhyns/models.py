@@ -20,7 +20,7 @@ class Thunder(Base):
     id = Column(Integer, primary_key=True)
     ip = Column(Unicode(15), unique=True)
     ipmiip = Column(Unicode(15), unique=True)
-    hypervisor = Column(Enum("esxi","xenserver","kvm","xen","vbox","hyperv","unknown","none"))
+    hypervisor = Column(Enum("esxi","esxi5","xenserver","xenserver6","kvm","kvm180","xen","xen180","vbox","vbox180","hyperv","unknown","none"))
     status = Column(Enum("ok","installing","poweringon","poweringoff","rebooting","locked"))
     power = Column(Unicode(15))
 
@@ -33,15 +33,15 @@ class Thunder(Base):
         self.power = power
 
 def populate():
-    t = [1,3,4,5,6,7,8,9,10,11]  # thunders 0wned 
+    t = [3,4,5,6,7,8,9,10,11]  # thunders 0wned 
     session = DBSession()
     session.configure
     
     print("== POPULATING THUNDERS ==")
     for i in t:
-    
+      print("Thunder %i" % i)
       thunder = Thunder(id=unicode(i), ip=unicode("10.60.1."+str(70+i)), ipmiip=unicode("10.60.1.1"+str(70+i)), hypervisor=u"none", status=u"ok", power=u"on")
-      thunder.hypervisor = rhyns.thunders_control.do_check_hypervisor(thunder)
+      thunder.hypervisor = rhyns.thunders_control.do_check_hypervisor_by_api(thunder)
       thunder.power = rhyns.thunders_control.do_check_power(thunder)
       session.add(thunder)
 
